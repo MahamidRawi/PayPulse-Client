@@ -2,6 +2,7 @@ import React, {useState, useEffect, useRef} from 'react';
 import { SafeAreaView, View, Animated, Text, TextInput, TouchableWithoutFeedback, Keyboard, Pressable, Button, TouchableOpacity } from 'react-native';
 import { auth_styles } from './_auth.styles';
 import { Link } from '@react-navigation/native';
+import { signIn } from './_auth.actions';
 
 interface AuthRouteProps {
     route: 'Sign Up' | 'Sign In'
@@ -14,12 +15,21 @@ export const AuthScreen: React.FC<AuthRouteProps> = ({route}) => {
     const [name, setName] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
+    const [error, setError] = useState<any>('');
 
 
     const fadeAnimTitle = useRef(new Animated.Value(0)).current;
     const fadeAnimLinkText = useRef(new Animated.Value(0)).current;
     const fadeAnimInputs = useRef(new Animated.Value(0)).current;
     const fadeAnimButton = useRef(new Animated.Value(0)).current;
+
+    const onSignIn = async () => {
+        try {
+            return await signIn(email, password)
+        } catch (err) {
+            return setError(err);
+        }
+    }
 
     useEffect(() => {
         Animated.sequence([
@@ -81,7 +91,8 @@ export const AuthScreen: React.FC<AuthRouteProps> = ({route}) => {
                     />
                 </Animated.View>
                 <Animated.View style={{ opacity: fadeAnimButton, width: '100%', alignItems: 'center' }}>
-                    <TouchableOpacity style={auth_styles.button} onPress={() => console.log('hello world')}>
+                    <Text style={{color: 'white'}}>{error}</Text>
+                    <TouchableOpacity style={auth_styles.button} onPress={() => onSignIn()}>
                         <Text>{route}</Text>
                     </TouchableOpacity>
                 </Animated.View>
