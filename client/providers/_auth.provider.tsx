@@ -31,8 +31,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             login: (token) => {
                 setUser(token);
                 console.log('User after login:', token);  // Add this log
-                SecureStore.setItem('token', token);
-                return console.log(SecureStore.getItem('token'));
+                return SecureStore.setItem('token', token);
             },
             logout: async () => {
                 setUser(null);

@@ -25,7 +25,7 @@ const ViewJob: React.FC<ViewJobProps> = () => {
     const timeRef = useRef<number>(0);
     const [ongoing, setOngoing] = useState<boolean>();
     const [userInfo, setUser] = useState<any>({});
-    const intervalRef = useRef<NodeJS.Timeout | null>(null);
+    const intervalRef = useRef<any>(null);
     const [stats, setStats] = useState<any>();
     const [showAlert, setShowAlert] = useState(false);
 const [alertMessage, setAlertMessage] = useState<string>('');

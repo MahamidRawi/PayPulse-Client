@@ -14,8 +14,6 @@ const Job: React.FC<JobProps> = ({name, id, color}) => {
     const [startTime, setStartTime] = useState<Date>();
     const [endTime, setEndTime] = useState<Date>();
     const navigation = useNavigation<any>();
-
-    useEffect(() => console.log('IND ID', id), []);
     
     return (
     <View key={id} style={[c_styles.job_parent, {backgroundColor: color}]}>

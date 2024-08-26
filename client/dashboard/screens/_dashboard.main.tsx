@@ -29,12 +29,8 @@ const Dashboard: React.FC<DashboardProps> = () => {
       if (res?.info) {
         setUserInfo(res.info);
         setBalance(res.info.balance);
-      } else {
-        console.error('Unexpected response structure:', res);
       }
     } catch (err) {
-      console.error('Error fetching user data:', err);
-      Alert.alert('Error', 'An Error has Occurred');
       if (err === false) logout();
     } finally {
       setTimeout(() => setLoading(false), 10000);
@@ -116,7 +112,7 @@ const Dashboard: React.FC<DashboardProps> = () => {
     userInfo.entries.reverse().slice(0, 3).map((entry: any, idx: number) => (
       <Entry
         key={idx}
-        currency="$"
+        currency={entry.currency}
         amount={entry.total}
         title={entry.title}
         time={entry.duration}

@@ -1,5 +1,6 @@
 // const base_url = 'http://172.20.10.3:4000';
-const base_url = 'http://10.100.102.19:4000'
+// const base_url = 'http://10.100.102.19:4000'
+const base_url = 'https://paypulse-server-68e2d8e20340.herokuapp.com'
 export const palette = {
     white: '#FBFBF9',
     dark: '#121212',
