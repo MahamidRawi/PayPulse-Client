@@ -21,3 +21,7 @@ Paypulse-client est une application mobile innovante qui permet aux utilisateurs
 1. Clonez le dépôt :
    ```bash
    git clone [Lien du repo GitHub]
+2. Accédez au répertoire du projet :
+   ```bash
+   npm start
+   
